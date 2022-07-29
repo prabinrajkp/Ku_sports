@@ -43,14 +43,14 @@ with tab1:
 		                       'border-color': 'Red'}).hide_index().set_caption(str(option)+' result')
 		
 	st.dataframe(ev)
-	dfi.export(ev, 'Result.png')
+	#dfi.export(ev, 'Result.png')
 		
-	with open("Result.png", "rb") as file: btn = st.download_button(
-		         label="Download Result",
-		         data=file,
-		         file_name="result.png",
-		         mime="image/png"
-		       )
+	#with open("Result.png", "rb") as file: btn = st.download_button(
+		         #label="Download Result",
+		         #data=file,
+		         #file_name="result.png",
+		         #mime="image/png"
+		       #)
 		       
 	#with c2:
 	st.markdown('###### Leaderboard - Individual')
