@@ -10,6 +10,8 @@ res = json.loads(j)
 
 with open('data.json', 'w') as f:
     json.dump(res, f)
+    
+print('json file created')
 
 
 def athletics():
