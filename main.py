@@ -3,11 +3,17 @@ import pandas as pd
 from data import athletics
 import dataframe_image as dfi
 #import gspread as gs
+from PIL import Image
 import json
+import datetime
+
+image= Image.open('splogo3e442.jpeg')
+
+st.image(image)
 
 st.markdown('# Campus olympics')
 
-st.markdown('## By Departmets Union sports clib')
+st.markdown('## By Departmets Union sports club')
 
 
 col1,col2=st.columns(2)
@@ -21,7 +27,7 @@ with col2:
 
 st.write('---')
 
-tab1, tab2,tab3 = st.tabs(["Event Wise Result","Leader Board","Point Table - Department_wise"])
+tab1, tab2,tab3 = st.tabs(["Event Wise Result","Leader Board","Registration"])
 
 df=athletics()
 ev=df['Event'].unique()
@@ -80,10 +86,40 @@ with tab2:
 
 
 with tab3:
+	with st.form("reg"):
+		tb1,tb2=st.columns(2)
+	
+		#st.write('name')
+		with tb1:
+			name=st.text_input(label='Name')
+			mob=st.text_input(label='Phone')
+			mail=st.text_input(label='E-mail')
+		with tb2:
+			gen=st.selectbox('Gender',('Male','Female','Transgender'))
+			d = st.date_input( "Date of birt",datetime.date(1999, 1, 1))
+			
+			fac=st.selectbox('Faculty',
+			('Applied Science and Technology','Arts, Education & Music','IMk, Commerce & Law','OrientalStudies','Science','Social Science'))
+		
+		items = st.multiselect(
+     'Events (Maximum 3 events)',
+     ['100 meter','200 meter','400 meter','1500 meter','Walking (3000 meter)','Shot put','Discus Throw','Javelin throw','Cricket Ball Throw'])
+		
+		
+		submit_button = st.form_submit_button(label='Submit')
+		
+	if len(items)>3 and submit_button==True:
+		st.error('Error: items cannot be more than 3')
+	#st.write(name,mob,mail,fac)
+	elif submit_button==True:
+		st.success(str(name)+' Successfully registered for ' + str(items))
+		
 	
 	
 	
-	st.write('ssbsbbs')
+	
+	
+	#st.write('ssbsbbs')
 
 #st.dataframe(df)
 	
