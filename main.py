@@ -6,6 +6,7 @@ import dataframe_image as dfi
 from PIL import Image
 import json
 import datetime
+from data import registration
 
 image= Image.open('splogo3e442.jpeg')
 
@@ -86,6 +87,8 @@ with tab2:
 
 
 with tab3:
+
+	#name,mob,mail= None
 	with st.form("reg"):
 		tb1,tb2=st.columns(2)
 	
@@ -107,12 +110,23 @@ with tab3:
 		
 		
 		submit_button = st.form_submit_button(label='Submit')
+	#st.write(len(name),len(mob),len(mail))
+	
+	
 		
 	if len(items)>3 and submit_button==True:
 		st.error('Error: items cannot be more than 3')
 	#st.write(name,mob,mail,fac)
+	elif submit_button==True and ((len(name) and len(mob) and len(mail))<1)  :
+		st.error("Error: all fields must be filled")
+		
 	elif submit_button==True:
 		st.success(str(name)+' Successfully registered for ' + str(items))
+		
+		for event in items:
+			
+			lst=[name,mob,mail,gen,fac,str(d),event]
+			registration(lst)
 		
 	
 	
