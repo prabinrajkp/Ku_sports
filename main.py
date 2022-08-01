@@ -17,12 +17,7 @@ st.markdown('# Campus olympics')
 st.markdown('## By Departmets Union sports club')
 
 
-col1,col2=st.columns(2)
-with col1:
-	st.write( '[Registration- Athletics](https://docs.google.com/forms/d/e/1FAIpQLSe8I1zuALlXKmxGu7gIRmH6DQ9LAOTEwfQ1jLgkZPFMitSJQg/viewform?usp=sf_link)')
-	
-with col2:
-	st.write( '[Registration- Games](https://docs.google.com/forms/d/e/1FAIpQLSe8I1zuALlXKmxGu7gIRmH6DQ9LAOTEwfQ1jLgkZPFMitSJQg/viewform?usp=sf_link)')
+
 
 
 

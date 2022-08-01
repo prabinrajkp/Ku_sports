@@ -18,7 +18,7 @@ def athletics():
 
 	gc = gs.service_account(filename='data.json')
 	os.remove('data.json')
-	sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1EWuTD-8ATgSxEcuCSVVoYGQ4WIrSpwvlU3u_-Z7qxbo/edit?usp=sharing')
+	sh = gc.open_by_url(st.secrets['result'])
 	ws = sh.worksheet('Sheet1')
 	df = pd.DataFrame(ws.get_all_records())
 	
@@ -34,7 +34,7 @@ def registration(lst):
 	gc = gs.service_account(filename='data.json')
 	os.remove('data.json')
 	
-	sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1nrtM6gdeGRh2SNWPKkeyPcxQI-Jis3nu7zdVtgmqz_o/edit?usp=sharing')
+	sh = gc.open_by_url(st.secrets['reg'])
 	ws = sh.worksheet('Sheet1')
 	ws.insert_row(lst,2)
 	
