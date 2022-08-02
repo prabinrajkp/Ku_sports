@@ -9,6 +9,8 @@ import datetime
 from data import registration
 from auth import check_password
 from union import admin
+from data import reg
+
 
 image= Image.open('campus olympics banner-04.jpg')
 
@@ -28,6 +30,7 @@ st.write('---')
 c=check_password()
 
 if c==True:
+	#dtt=reg()
 	admin()
 
 else:

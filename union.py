@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit as st
 import pandas as pd
 from data import athletics
 import dataframe_image as dfi
@@ -9,6 +8,7 @@ import json
 import datetime
 from data import registration
 from data import reg
+
 
 def admin():
 
