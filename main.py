@@ -16,9 +16,9 @@ image= Image.open('campus olympics banner-04.jpg')
 
 st.image(image)
 
-st.markdown('#  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Campus olympics')
+st.markdown('#  Campus olympics')
 
-st.markdown('## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; By Departmets Union Sports Club')
+st.markdown('##  By Departmets Union Sports Club')
 
 
 
@@ -30,7 +30,7 @@ st.write('---')
 c=check_password()
 
 if c==True:
-	#dtt=reg()
+	
 	admin()
 
 else:
