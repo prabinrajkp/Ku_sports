@@ -12,13 +12,13 @@ from union import admin
 from data import reg
 
 
-image= Image.open('campus olympics banner-04.jpg')
+image= Image.open('logo.png')
 
 st.image(image)
 
 st.markdown('#  Campus olympics')
 
-st.markdown('### Departmets Union Sports Club')
+st.markdown('#### Departmets Union Sports Club')
 
 
 
