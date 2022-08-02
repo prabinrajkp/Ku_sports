@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit as st
 import pandas as pd
 from data import athletics
 import dataframe_image as dfi
@@ -7,45 +8,21 @@ from PIL import Image
 import json
 import datetime
 from data import registration
-from auth import check_password
-from union import admin
+from data import reg
 
-image= Image.open('campus olympics banner-04.jpg')
+def admin():
 
-st.image(image)
-
-st.markdown('#  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Campus olympics')
-
-st.markdown('## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; By Departmets Union Sports Club')
-
-
-
-
-
-
-st.write('---')
-
-c=check_password()
-
-if c==True:
-	admin()
-
-else:
-	
-	
-
-
-	tab1, tab2,tab3 = st.tabs(["Event Wise Result","Leader Board","Registration"])
+	tab1, tab2,tab3,tab4 = st.tabs(["Event Wise Result","Leader Board","Registration",'Admin Access'])
 
 	df=athletics()
-	evn=df['Event'].unique()
+	ev=df['Event'].unique()
 
 	with tab1:
 
 		c1,c2=st.columns(2)
 		#with c1:
 		st.markdown('###### Event result')
-		option = st.selectbox('',evn,key='event')
+		option = st.selectbox('',ev)
 
 		st.write('Results For ', option)
 
@@ -97,7 +74,7 @@ else:
 	with tab3:
 
 		#name,mob,mail= None
-		with st.form("reg", clear_on_submit=True):
+		with st.form("reg2", clear_on_submit=True):
 			tb1,tb2=st.columns(2)
 		
 			#st.write('name')
@@ -135,15 +112,43 @@ else:
 				
 				lst=[name,mob,mail,gen,fac,str(d),event]
 				registration(lst)
+				
+				
+	with tab4:
+		
+		
+		with st.form('ew',clear_on_submit=True):
+			st.markdown('#### Event Wise Participants')
+		
+			Event=st.selectbox(
+		 'Event)',
+		 ['100 meter','200 meter','400 meter','1500 meter','Walking (3000 meter)','Shot put','Discus Throw','Javelin throw','Cricket Ball Throw'])
+			gen1=st.selectbox('Gender',('Male','Female','Transgender'))
+			submit = st.form_submit_button(label='Submit')
 			
+			d=reg()
+			
+			if submit==True:
+				
+				st.write('Participants for ' + str(Event)+'-'+str(gen1))
+				elist=d[(d['event']==Event) & (d['gender']==gen1)]
+				st.dataframe(elist[['name','mobile','email','faculty','age']])
+				
+		with st.form('fac'):
+			st.markdown('#### Faculty Wise Participants')
+			fac=st.selectbox('Faculty',
+				('Applied Science and Technology','Arts, Education & Music','IMk, Commerce & Law','OrientalStudies','Science','Social Science'))
+			submit2 = st.form_submit_button(label='Submit')
+			
+			if submit2==True:	
+				fc=d[d['faculty']==fac]
+				st.dataframe(fc[['name','mobile','email','event','gender']])
+			
+			
+			
+			
+			#st.dataframe(d)
 		
 		
-	
-	
-	
-	#st.write('ssbsbbs')
-
-#st.dataframe(df)
-	
-	
-
+		
+		
