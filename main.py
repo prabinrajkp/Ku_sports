@@ -1,4 +1,18 @@
 import streamlit as st
+
+st.set_page_config(
+     page_title="Campus olympics",
+     page_icon="ð§",
+     layout="wide",
+     initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://instagram.com/keralauniversitydsu?igshid=YmMyMTA2M2Y=',
+         'Report a bug': "https://www.linkedin.com/in/prabinrajkp18/",
+         'About': "# Departments union sports club - campus olympics web app"
+     }
+ )
+
+
 import pandas as pd
 from data import athletics
 import dataframe_image as dfi
@@ -10,6 +24,11 @@ from data import registration
 from auth import check_password
 from union import admin
 from data import reg
+
+
+
+
+
 
 
 image= Image.open('logo.png')
@@ -138,6 +157,13 @@ else:
 				
 				lst=[name,mob,mail,gen,fac,str(d),event]
 				registration(lst)
+				
+with st.sidebar.expander("Developers"):
+ 	st.markdown('#### [Prabin Raj K P](https://www.linkedin.com/in/prabinrajkp18/)')
+ 	st.markdown('#### [Vijay V Venkitesh](https://www.linkedin.com/in/vijay-v-venkitesh-673177204/)')
+ 	st.write('##### MSc Data Science \n Department of Future Studies')
+ 	
+     #st.image("https://static.streamlit.io/examples/dice.jpg")
 			
 		
 		
